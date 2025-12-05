@@ -4,51 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>❤️</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #fff0f5;
-            text-align: center;
-            padding: 40px;
-            margin: 0;
-        }
-        h1 {
-            color: #d43a7e;
-        }
-        .counters {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 30px 0;
-        }
-        .counter-box {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            min-width: 150px;
-        }
-        .counter {
-            font-size: 3em;
-            color: #ff69b4;
-            font-weight: bold;
-        }
-        .btn {
-            padding: 12px 28px;
-            font-size: 1.1em;
-            margin: 10px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            background: #ff69b4;
-            color: white;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        .btn:hover {
-            background: #ff1493;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/love.css') }}">
 </head>
 <body>
     <h1>{{ $date }}</h1>
