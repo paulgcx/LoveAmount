@@ -1,9 +1,11 @@
 async function increment(type) {
     const url = type === 'paul' ? '/increment/paul' : '/increment/vic';
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
     const response = await fetch(url, {
         method: 'POST',
         headers: {
-            'X-CSRF-TOKEN': csrf_token(),
+            'X-CSRF-TOKEN': csrfToken,
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }

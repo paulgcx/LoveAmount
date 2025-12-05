@@ -6,7 +6,6 @@
     <title>❤️</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/love.css') }}">
-    <script src="{{ asset('js/love.js') }}"></script>
 </head>
 <body>
     <div class="container">
@@ -26,5 +25,6 @@
         <button class="btn" onclick="increment('paul')">+1 Para mí</button>
         <button class="btn" onclick="increment('vic')">+1 Para ella</button>
     </div>
+    <script src="{{ asset('js/love.js') }}"></script>
 </body>
 </html>
