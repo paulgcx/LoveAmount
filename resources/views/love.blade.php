@@ -51,15 +51,15 @@
     </style>
 </head>
 <body>
-    <h1>Contador - {{ $date }}</h1>
+    <h1>{{ $date }}</h1>
 
     <div class="counters">
         <div class="counter-box">
-            <div>Tú</div>
+            <div>Paul</div>
             <div class="counter" id="p-count">{{ $p_count }}</div>
         </div>
         <div class="counter-box">
-            <div>Ella</div>
+            <div>VicMeow</div>
             <div class="counter" id="v-count">{{ $v_count }}</div>
         </div>
     </div>
