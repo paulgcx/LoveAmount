@@ -19,6 +19,6 @@ async function increment(type) {
             document.getElementById('v-count').textContent = data.v_count;
         }
     } else {
-        alert('¡Ups! Algo falló 😢');
+        alert('¡Algo falló!');
     }
 }

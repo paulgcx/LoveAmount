@@ -22,8 +22,8 @@
             </div>
         </div>
 
-        <button class="btn" onclick="increment('paul')">+1 Para mí</button>
-        <button class="btn" onclick="increment('vic')">+1 Para ella</button>
+        <button class="btn" onclick="increment('paul')">+1</button>
+        <button class="btn" onclick="increment('vic')">+1</button>
     </div>
     <script src="{{ asset('js/love.js') }}"></script>
 </body>
