@@ -3,7 +3,7 @@ async function increment(type) {
     const response = await fetch(url, {
         method: 'POST',
         headers: {
-            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            'X-CSRF-TOKEN': csrf_token(),
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
