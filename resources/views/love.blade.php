@@ -10,18 +10,18 @@
 <body>
     <div class="container">
         <div class="counters">
-
+            
             <!-- PAUL -->
-            <div class="counter-box">
-                <div>Paul</div>
-                <div class="counter" id="p-count">{{ $p_count }}</div>
+            <div class="person-box">
+                <div class="name">Paul</div>
+                <div class="counter fade" id="p-count">{{ $p_count }}</div>
                 <button class="btn" onclick="increment('paul')">+1</button>
             </div>
 
             <!-- VICMEOW -->
-            <div class="counter-box">
-                <div>VicMeow</div>
-                <div class="counter" id="v-count">{{ $v_count }}</div>
+            <div class="person-box">
+                <div class="name">VicMeow</div>
+                <div class="counter fade" id="v-count">{{ $v_count }}</div>
                 <button class="btn" onclick="increment('vic')">+1</button>
             </div>
         </div>
@@ -30,6 +30,7 @@
             {{ $date }}
         </div>
     </div>
+
     <script src="{{ asset('js/love.js') }}"></script>
 </body>
 </html>
