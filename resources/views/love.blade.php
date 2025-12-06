@@ -9,8 +9,10 @@
 </head>
 <body>
     <div class="container">
+        <div class="date-display">{{ $date }}</div>
+
         <div class="counters">
-            
+
             <!-- PAUL -->
             <div class="person-box">
                 <div class="name">Paul</div>
@@ -26,9 +28,12 @@
             </div>
         </div>
 
-        <div class="date-display">
-            {{ $date }}
-        </div>
+        <!-- Flecha hacia "tiempo juntos" -->
+        <a href="{{ route('tiempo.juntos') }}" class="arrow-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </a>
     </div>
 
     <script src="{{ asset('js/love.js') }}"></script>

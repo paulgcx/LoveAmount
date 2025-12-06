@@ -95,3 +95,20 @@ body {
     margin-top: 10px;
     text-shadow: 0 0 8px rgba(212, 167, 255, 0.3);
 }
+
+.arrow-link {
+    display: inline-block;
+    color: #d4a7ff;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.arrow-link:hover {
+    opacity: 1;
+    transform: translateY(4px);
+}
+
+.arrow-link svg {
+    stroke: #d4a7ff;
+}
