@@ -9,21 +9,24 @@
 </head>
 <body>
     <div class="container">
-        <h1>{{ $date }}</h1>
-
         <div class="counters">
+
+            <!-- PAUL -->
             <div class="counter-box">
                 <div>Paul</div>
                 <div class="counter" id="p-count">{{ $p_count }}</div>
+                <button class="btn" onclick="increment('paul')">+1</button>
             </div>
+
+            <!-- VICMEOW -->
             <div class="counter-box">
                 <div>VicMeow</div>
                 <div class="counter" id="v-count">{{ $v_count }}</div>
+                <button class="btn" onclick="increment('vic')">+1</button>
             </div>
         </div>
 
-        <button class="btn" onclick="increment('paul')">+1</button>
-        <button class="btn" onclick="increment('vic')">+1</button>
+        <h1>{{ $date }}</h1>
     </div>
     <script src="{{ asset('js/love.js') }}"></script>
 </body>
