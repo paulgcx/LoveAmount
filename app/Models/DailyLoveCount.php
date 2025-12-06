@@ -11,13 +11,15 @@ class DailyLoveCount extends Model
     use HasFactory;
 
     protected $fillable = ['date', 'p_count', 'v_count'];
+    protected $casts = [
+        'date' => 'date:Y-m-d',
+    ];
 
     public static function forToday() {
-        $today = Carbon::today()->toDateString();
-        $date = Carbon::parse($today)->locale('es')->isoFormat('D [de] MMMM [de] YYYY');
+        $today = Carbon::today();
 
         return static::firstOrCreate(
-            ['date' => $date],
+            ['date' => $today],
             ['p_count' => 0, 'v_count' => 0]
         );
     }
