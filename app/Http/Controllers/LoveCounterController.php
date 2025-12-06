@@ -15,7 +15,7 @@ class LoveCounterController extends Controller
         return view('love', [
             'p_count' => $record->p_count,
             'v_count' => $record->v_count,
-            'date' => $record->fecha_format,
+            'date' => $fecha_format
         ]);
     }
 
