@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(135deg, #1a0a1f, #2d0b3a, #4b0082);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f8f0ff;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.counters {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.person-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(70, 20, 90, 0.35);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(180, 100, 220, 0.3);
+    border-radius: 20px;
+    padding: 24px 20px;
+    min-width: 160px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.name {
+    font-size: 1.2em;
+    color: #e0c0ff;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.counter {
+    font-size: 3.6em;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+    margin-bottom: 16px;
+}
+
+.btn {
+    padding: 10px 24px;
+    font-size: 1.05em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: linear-gradient(to right, #8a2be2, #a45deb);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.4);
+    transition: all 0.25s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(to right, #9b45f0, #b575f5);
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(138, 43, 226, 0.6);
+}
+
+/* Efecto de fade para los números */
+.fade {
+    transition: opacity 0.3s ease;
+}
+
+.fade.updating {
+    opacity: 0.7;
+}
+
+.date-display {
+    font-size: 1.3em;
+    color: #d4a7ff;
+    letter-spacing: 0.5px;
+    margin-top: 10px;
+    text-shadow: 0 0 8px rgba(212, 167, 255, 0.3);
+}
