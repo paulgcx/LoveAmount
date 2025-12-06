@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\DailyLoveCount;
 use Illuminate\Http\Request;
 
@@ -9,10 +10,12 @@ class LoveCounterController extends Controller
 {
     public function index() {
         $record = DailyLoveCount::forToday();
+        $fecha_format = Carbon::parse($record->date)->locale('es')->isoFormat('D [de] MMMM [de] YYYY');
+
         return view('love', [
             'p_count' => $record->p_count,
             'v_count' => $record->v_count,
-            'date' => $record->date,
+            'date' => $record->fecha_format,
         ]);
     }
 
