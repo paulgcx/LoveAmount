@@ -26,7 +26,9 @@
             </div>
         </div>
 
-        <h1>{{ $date }}</h1>
+        <div class="date-display">
+            {{ $date }}
+        </div>
     </div>
     <script src="{{ asset('js/love.js') }}"></script>
 </body>

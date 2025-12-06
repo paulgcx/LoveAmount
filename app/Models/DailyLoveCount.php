@@ -14,9 +14,10 @@ class DailyLoveCount extends Model
 
     public static function forToday() {
         $today = Carbon::today()->toDateString();
+        $date = Carbon::parse($today)->locale('es')->isoFormat('D [de] MMMM [de] YYYY');
 
         return static::firstOrCreate(
-            ['date' => $today],
+            ['date' => $date],
             ['p_count' => 0, 'v_count' => 0]
         );
     }
