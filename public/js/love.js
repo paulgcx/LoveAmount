@@ -74,3 +74,26 @@ function incrementWithEffect(type, event) {
     // Ejecutar la lógica de incremento
     increment(type);
 }
+
+// Actualiza los contadores cada 3 segundos
+setInterval(async () => {
+    try {
+        const response = await fetch('/');
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        
+        // Actualiza solo si el valor cambió
+        const newP = doc.getElementById('p-count').textContent;
+        const newV = doc.getElementById('v-count').textContent;
+        
+        if (document.getElementById('p-count').textContent !== newP) {
+            document.getElementById('p-count').textContent = newP;
+        }
+        if (document.getElementById('v-count').textContent !== newV) {
+            document.getElementById('v-count').textContent = newV;
+        }
+    } catch (e) {
+        // Silencioso en caso de error
+    }
+}, 1000); // Cada 1 segundos
