@@ -6,6 +6,7 @@
     <title>❤️</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('css/love.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/arrow.css') }}">
 </head>
 <body>
     <div class="container">

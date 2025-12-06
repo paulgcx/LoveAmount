@@ -2,12 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoveCounterController;
+use App\Http\Controllers\TiempoJuntosController;
 
 // MAIN RUTAS --------------------------------------------------------------
-Route::get('/', [LoveCounterController::class, 'index']);
-Route::get('/tiempo-juntos', function() {
-    return "Tiempo juntos";
-})->name('tiempo.juntos');
+Route::get('/', [LoveCounterController::class, 'index'])->name('love.index');
+Route::get('/tiempo-juntos', [TiempoJuntosController::class, 'index'])->name('tiempo.juntos');
 
 // INCREMENTOS -------------------------------------------------------------
 Route::post('/increment/paul', [LoveCounterController::class, 'incrementPaul']);
