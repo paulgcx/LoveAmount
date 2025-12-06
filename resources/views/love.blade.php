@@ -18,14 +18,14 @@
             <div class="person-box">
                 <div class="name">Paul</div>
                 <div class="counter fade" id="p-count">{{ $p_count }}</div>
-                <button class="btn" onclick="increment('paul')">+1</button>
+                <button class="btn" onclick="incrementWithEffect('paul', event)">+1</button>
             </div>
 
             <!-- VICMEOW -->
             <div class="person-box">
                 <div class="name">VicMeow</div>
                 <div class="counter fade" id="v-count">{{ $v_count }}</div>
-                <button class="btn" onclick="increment('vic')">+1</button>
+                <button class="btn" onclick="incrementWithEffect('vic', event)">+1</button>
             </div>
         </div>
 
@@ -37,6 +37,7 @@
         </a>
     </div>
 
+    <div id="hearts-container"></div>
     <script src="{{ asset('js/love.js') }}"></script>
 </body>
 </html>
