@@ -126,3 +126,19 @@ body {
         opacity: 0;
     }
 }
+
+/* Efecto de latido al actualizar desde otro dispositivo */
+.counter.sync-pulse {
+    animation: syncPulse 0.6s ease;
+}
+
+@keyframes syncPulse {
+    0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+    }
+    50% {
+        transform: scale(1.25);
+        text-shadow: 0 0 20px rgba(255, 105, 180, 0.9);
+    }
+}
