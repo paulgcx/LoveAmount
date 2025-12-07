@@ -22,16 +22,21 @@
         <!-- Botones -->
         <div class="counters">
             <!-- PAUL -->
-            <div class="person-box">
-                <div class="name">Paul</div>
-                <div class="counter fade" id="p-count">{{ $p_count }}</div>
-                <button class="btn" onclick="incrementWithEffect('paul', event)">+1 ❤️</button>
+            <div class="person-with-bg">
+                <img src="{{ asset('img/billy.png') }}" class="billy">
+                <div class="speech-bubble" id="paul-bubble">¡Te amo, amor!</div>
+                <div class="person-box">
+                    <div class="name">Paul</div>
+                    <div class="counter fade" id="p-count">{{ $p_count }}</div>
+                    <button class="btn" onclick="incrementWithEffect('paul', event)">+1 ❤️</button>
+                </div>
             </div>
 
             <!-- VICMEOW -->
             <div class="person-with-bg">
-                <img src="{{ asset('img/pusheen.png') }}" class="person-bg">
-                <div class="person-box vic-especial">
+                <img src="{{ asset('img/pusheen.png') }}" class="pusheen">
+                <div class="speech-bubble" id="vic-bubble">¡Te amo, amor!</div>
+                <div class="person-box">
                     <div class="name">VicMeow</div>
                     <div class="counter fade" id="v-count">{{ $v_count }}</div>
                     <button class="btn" onclick="incrementWithEffect('vic', event)">+1 ❤️</button>
