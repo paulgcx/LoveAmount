@@ -86,12 +86,23 @@ setInterval(async () => {
         // Actualiza solo si el valor cambió
         const newP = doc.getElementById('p-count').textContent;
         const newV = doc.getElementById('v-count').textContent;
+        const currentP = document.getElementById('p-count').textContent;
+        const currentV = document.getElementById('v-count').textContent;
         
-        if (document.getElementById('p-count').textContent !== newP) {
-            document.getElementById('p-count').textContent = newP;
+        // CAMBIO EN PAUL DESDE OTRO DISPOSITIVO.
+        if (newP !== currentP) {
+            const pEl = document.getElementById('p-count');
+            pEl.textContent = newP;
+            pEl.classList.add('sync-pulse');
+            setTimeout(() => pEl.classList.remove('sync-pulse'), 600);
         }
-        if (document.getElementById('v-count').textContent !== newV) {
-            document.getElementById('v-count').textContent = newV;
+
+        // CAMBIO EN VIC DESDE OTRO DISPOSITIVO.
+        if (newV !== currentV) {
+            const vEl = document.getElementById('v-count');
+            vEl.textContent = newV;
+            vEl.classList.add('sync-pulse');
+            setTimeout(() => vEl.classList.remove('sync-pulse'), 600);
         }
     } catch (e) {
         // Silencioso en caso de error
