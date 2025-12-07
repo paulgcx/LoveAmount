@@ -1,3 +1,8 @@
+@php
+    // Quién está viendo la página:
+    $key = request()->get('key');
+@endphp
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,6 +16,11 @@
 </head>
 <body>
     <div class="container">
+    @if (!$key)
+        <div class="intro-message">
+            ¿Eres <a href="?key=paul">Paul</a> o <a href="?key=vic">VicMeow</a>?
+        </div>
+    @else
         <div>
             <div class="date-display">{{ $date }}</div>
             <div class="total-container">
@@ -28,7 +38,11 @@
                 <div class="person-box">
                     <div class="name">Paul</div>
                     <div class="counter fade" id="p-count">{{ $p_count }}</div>
-                    <button class="btn" onclick="incrementWithEffect('paul', event)">+1 ❤️</button>
+                    @if($key === 'paul')
+                        <button class="btn" onclick="incrementWithEffect('paul', event)">+1 ❤️</button>
+                    @else
+                        <button class="btn disabled" disabled>+1 ❤️</button>
+                    @endif
                 </div>
             </div>
 
@@ -39,13 +53,17 @@
                 <div class="person-box">
                     <div class="name">VicMeow</div>
                     <div class="counter fade" id="v-count">{{ $v_count }}</div>
-                    <button class="btn" onclick="incrementWithEffect('vic', event)">+1 ❤️</button>
+                    @if($key === 'vic')
+                        <button class="btn" onclick="incrementWithEffect('vic', event)">+1 ❤️</button>
+                    @else
+                        <button class="btn disabled" disabled>+1 ❤️</button>
+                    @endif
                 </div>
             </div>
         </div>
 
         <!-- Flecha hacia "tiempo juntos" -->
-        <a href="{{ route('tiempo.juntos') }}" class="arrow-link">
+        <a href="{{ route('tiempo.juntos') }}{{ $key ? '?key=' . $key : '' }}" class="arrow-link">
             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
@@ -54,5 +72,6 @@
 
     <div id="hearts-container"></div>
     <script src="{{ asset('js/love.js') }}"></script>
+    @endif
 </body>
 </html>
