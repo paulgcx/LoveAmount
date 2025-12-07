@@ -29,10 +29,13 @@
             </div>
 
             <!-- VICMEOW -->
-            <div class="person-box">
-                <div class="name">VicMeow</div>
-                <div class="counter fade" id="v-count">{{ $v_count }}</div>
-                <button class="btn" onclick="incrementWithEffect('vic', event)">+1 ❤️</button>
+            <div class="person-with-bg">
+                <img src="{{ asset('img/pusheen.png') }}" class="person-bg">
+                <div class="person-box vic-especial">
+                    <div class="name">VicMeow</div>
+                    <div class="counter fade" id="v-count">{{ $v_count }}</div>
+                    <button class="btn" onclick="incrementWithEffect('vic', event)">+1 ❤️</button>
+                </div>
             </div>
         </div>
 
