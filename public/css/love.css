@@ -72,48 +72,40 @@ body {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* Globo de diálogo */
 .speech-bubble {
     position: absolute;
-    bottom: 100%;
-    padding: 8px 16px;
+    bottom: 110%; /* justo encima de la imagen */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px); /* ligeramente abajo al inicio */
     background: white;
     color: #6a11cb;
-    border-radius: 20px;
+    padding: 2px 3px;
+    border-radius: 18px;
+    font-size: 0.95em;
     font-weight: 600;
-    font-size: 1.1em;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
     opacity: 0;
     pointer-events: none;
     z-index: 1;
-    transition: opacity 0.3s, transform 0.3s;
-    white-space: nowrap;
-    text-align: center;
-    width: auto;
+    transition: 
+        opacity 0.3s ease,
+        transform 0.3s ease;
 }
 
 .speech-bubble.show {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0); /* sube suavemente */
 }
 
-/* Globo de Paul: a la izquierda */
-#paul-bubble {
-    left: -30%;
-    transform: translateX(-50%) translateY(10px);
-}
-
-#paul-bubble.show {
-    transform: translateX(-50%) translateY(0);
-}
-
-/* Globo de VicMeow: a la derecha */
-#vic-bubble {
-    left: 130%;
-    transform: translateX(-50%) translateY(10px);
-}
-
-#vic-bubble.show {
-    transform: translateX(-50%) translateY(0);
+/* En móviles muy pequeños */
+@media (max-width: 360px) {
+    .speech-bubble {
+        font-size: 0.85em;
+        padding: 5px 10px;
+        max-width: 100px;
+        white-space: nowrap;
+    }
 }
 
 .name {
