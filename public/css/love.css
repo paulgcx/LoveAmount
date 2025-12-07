@@ -72,6 +72,50 @@ body {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
+.speech-bubble {
+    position: absolute;
+    bottom: 100%;
+    padding: 8px 16px;
+    background: white;
+    color: #6a11cb;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1.1em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.3s, transform 0.3s;
+    white-space: nowrap;
+    text-align: center;
+    width: auto;
+}
+
+.speech-bubble.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Globo de Paul: a la izquierda */
+#paul-bubble {
+    left: -30%;
+    transform: translateX(-50%) translateY(10px);
+}
+
+#paul-bubble.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Globo de VicMeow: a la derecha */
+#vic-bubble {
+    left: 130%;
+    transform: translateX(-50%) translateY(10px);
+}
+
+#vic-bubble.show {
+    transform: translateX(-50%) translateY(0);
+}
+
 .name {
     font-size: 1.2em;
     color: #e0c0ff;
@@ -125,8 +169,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px; /* espacio entre número y corazón */
-    margin: 22px 0 30px;
+    gap: 8px;
+    margin: 5px 0 50px;
 }
 
 .total-count {

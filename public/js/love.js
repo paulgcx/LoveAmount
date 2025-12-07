@@ -71,6 +71,10 @@ function incrementWithEffect(type, event) {
     // Crear corazones
     createHearts(x, y);
 
+    // Mostrar globo de dialogo.
+    if (type === 'paul') showBubble('paul-bubble');
+    if (type === 'vic') showBubble('vic-bubble');
+
     // Ejecutar la lógica de incremento
     increment(type);
 }
@@ -115,6 +119,18 @@ setInterval(async () => {
             total.textContent = p + v;
         }
     } catch (e) {
-        // Silencioso en caso de error
+        // TO DO.
     }
-}, 1000); // Cada 1 segundos
+}, 1000);
+
+function showBubble(bubbleId) {
+    const bubble = document.getElementById(bubbleId);
+
+    if (!bubble) return;
+
+    bubble.classList.add('show');
+
+    setTimeout(() => {
+        bubble.classList.remove('show');
+    }, 1500);
+}
