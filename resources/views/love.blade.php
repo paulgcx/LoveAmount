@@ -24,7 +24,7 @@
             <!-- PAUL -->
             <div class="person-with-bg">
                 <img src="{{ asset('img/billy.png') }}" class="billy">
-                <div class="speech-bubble" id="paul-bubble">¡Te amo, amor!</div>
+                <div class="speech-bubble" id="paul-bubble">¡Te quiero, amor!</div>
                 <div class="person-box">
                     <div class="name">Paul</div>
                     <div class="counter fade" id="p-count">{{ $p_count }}</div>
@@ -35,7 +35,7 @@
             <!-- VICMEOW -->
             <div class="person-with-bg">
                 <img src="{{ asset('img/pusheen.png') }}" class="pusheen">
-                <div class="speech-bubble" id="vic-bubble">¡Te amo, amor!</div>
+                <div class="speech-bubble" id="vic-bubble">¡Te quiero, amor!</div>
                 <div class="person-box">
                     <div class="name">VicMeow</div>
                     <div class="counter fade" id="v-count">{{ $v_count }}</div>

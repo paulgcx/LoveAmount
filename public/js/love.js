@@ -125,12 +125,15 @@ setInterval(async () => {
 
 function showBubble(bubbleId) {
     const bubble = document.getElementById(bubbleId);
-
     if (!bubble) return;
 
+    // Asegurar que empieza oculto (por si hay interrupciones)
+    bubble.classList.remove('show');
+    void bubble.offsetWidth; // fuerza reflow
     bubble.classList.add('show');
 
+    // Ocultar después de 2 segundos
     setTimeout(() => {
         bubble.classList.remove('show');
-    }, 1500);
+    }, 2000);
 }
