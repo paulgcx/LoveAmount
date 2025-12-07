@@ -88,6 +88,9 @@ setInterval(async () => {
         const newV = doc.getElementById('v-count').textContent;
         const currentP = document.getElementById('p-count').textContent;
         const currentV = document.getElementById('v-count').textContent;
+
+        // Valor total
+        const total = document.querySelector('.total-count');
         
         // CAMBIO EN PAUL DESDE OTRO DISPOSITIVO.
         if (newP !== currentP) {
@@ -103,6 +106,13 @@ setInterval(async () => {
             vEl.textContent = newV;
             vEl.classList.add('sync-pulse');
             setTimeout(() => vEl.classList.remove('sync-pulse'), 600);
+        }
+
+        // CAMBIO EN EL TOTAL
+        if (total) {
+            const p = parseInt(document.getElementById('p-count').textContent);
+            const v = parseInt(document.getElementById('v-count').textContent);
+            total.textContent = p + v;
         }
     } catch (e) {
         // Silencioso en caso de error

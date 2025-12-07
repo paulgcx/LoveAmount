@@ -20,7 +20,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 30px;
     width: 100%;
     max-width: 800px;
 }
@@ -32,23 +32,43 @@ body {
     flex-wrap: wrap;
 }
 
+.person-with-bg {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.person-bg {
+    position: absolute;
+    top: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    max-width: 150px;
+    height: auto;
+    z-index: -1;
+}
+
 .person-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: rgba(70, 20, 90, 0.35);
+    background: rgba(70, 20, 90, 1);
     backdrop-filter: blur(6px);
-    border: 1px solid rgba(180, 100, 220, 0.3);
     border-radius: 20px;
     padding: 24px 20px;
     min-width: 160px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
+.person-box.vic-special {
+    position: relative;
+    z-index: 2;
+}
+
 .name {
     font-size: 1.2em;
     color: #e0c0ff;
-    margin-bottom: 12px;
     font-weight: 600;
 }
 
@@ -92,8 +112,40 @@ body {
     font-size: 1.3em;
     color: #d4a7ff;
     letter-spacing: 0.5px;
-    margin-top: 10px;
     text-shadow: 0 0 8px rgba(212, 167, 255, 0.3);
+}
+
+.total-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* espacio entre número y corazón */
+    margin: 22px 0 30px;
+}
+
+.total-count {
+    font-size: 4.2em;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 0 16px rgba(255, 105, 180, 0.7);
+    line-height: 1;
+    margin: 0;
+}
+
+.total-heart {
+    font-size: 2.8em;
+    color: #ff69b4;
+    animation: heartbeat 1.2s infinite;
+    line-height: 1;
+}
+
+@keyframes heartbeat {
+    0%   { transform: scale(1); }
+    14%  { transform: scale(1.05); }
+    28%  { transform: scale(1); }
+    42%  { transform: scale(1.05); }
+    70%  { transform: scale(1); }
+    100% { transform: scale(1); }
 }
 
 /* Efecto de corazones al hacer clic */
