@@ -11,22 +11,28 @@
 </head>
 <body>
     <div class="container">
-        <div class="date-display">{{ $date }}</div>
-
+        <div>
+            <div class="date-display">{{ $date }}</div>
+            <div class="total-container">
+                <div class="total-count">{{ $p_count + $v_count }}</div>
+                <div class="total-heart">❤️</div>
+            </div>
+        </div>
+        
+        <!-- Botones -->
         <div class="counters">
-
             <!-- PAUL -->
             <div class="person-box">
                 <div class="name">Paul</div>
                 <div class="counter fade" id="p-count">{{ $p_count }}</div>
-                <button class="btn" onclick="incrementWithEffect('paul', event)">+1</button>
+                <button class="btn" onclick="incrementWithEffect('paul', event)">+1 ❤️</button>
             </div>
 
             <!-- VICMEOW -->
             <div class="person-box">
                 <div class="name">VicMeow</div>
                 <div class="counter fade" id="v-count">{{ $v_count }}</div>
-                <button class="btn" onclick="incrementWithEffect('vic', event)">+1</button>
+                <button class="btn" onclick="incrementWithEffect('vic', event)">+1 ❤️</button>
             </div>
         </div>
 

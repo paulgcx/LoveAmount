@@ -20,7 +20,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
+    gap: 20px;
     width: 100%;
     max-width: 800px;
 }
@@ -92,8 +92,40 @@ body {
     font-size: 1.3em;
     color: #d4a7ff;
     letter-spacing: 0.5px;
-    margin-top: 10px;
     text-shadow: 0 0 8px rgba(212, 167, 255, 0.3);
+}
+
+.total-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px; /* espacio entre número y corazón */
+    margin: 22px 0 30px;
+}
+
+.total-count {
+    font-size: 4.2em;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 0 16px rgba(255, 105, 180, 0.7);
+    line-height: 1;
+    margin: 0;
+}
+
+.total-heart {
+    font-size: 2.8em;
+    color: #ff69b4;
+    animation: heartbeat 1.2s infinite;
+    line-height: 1;
+}
+
+@keyframes heartbeat {
+    0%   { transform: scale(1); }
+    14%  { transform: scale(1.05); }
+    28%  { transform: scale(1); }
+    42%  { transform: scale(1.05); }
+    70%  { transform: scale(1); }
+    100% { transform: scale(1); }
 }
 
 /* Efecto de corazones al hacer clic */
