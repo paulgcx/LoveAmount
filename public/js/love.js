@@ -90,31 +90,43 @@ function incrementWithEffect(type, event) {
 // Actualiza los contadores cada segundo
 setInterval(async () => {
     try {
-        const response = await fetch('/');
+        const response = await fetch('/', {
+            method: 'GET',
+            headers: {
+                'Cache-Control': 'no-cache, no-store, must-revalidate',
+                'Pragma': 'no-cache',
+                'Expires': '0'
+            }
+        });
+
+        if (!response.ok) return;
+
         const html = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');
+
+        const newPEl = doc.getElementById('p-count');
+        const newVEl = doc.getElementById('v-count');
+        if (!newPEl || !newVEl) return;
         
         // Actualiza solo si el valor cambió
-        const newP = doc.getElementById('p-count').textContent;
-        const newV = doc.getElementById('v-count').textContent;
-        const currentP = document.getElementById('p-count').textContent;
-        const currentV = document.getElementById('v-count').textContent;
+        const newP = newPEl.textContent;
+        const newV = newVEl.textContent;
+        const currentP = document.getElementById('p-count')?.textContent;
+        const currentV = document.getElementById('v-count')?.textContent;
         
         // CAMBIO EN PAUL DESDE OTRO DISPOSITIVO.
         if (newP !== currentP) {
-            const pEl = document.getElementById('p-count');
-            pEl.textContent = newP;
-            pEl.classList.add('sync-pulse');
-            setTimeout(() => pEl.classList.remove('sync-pulse'), 600);
+            document.getElementById('p-count').textContent = newP;
+            document.getElementById('p-count').classList.add('sync-pulse');
+            setTimeout(() => document.getElementById('p-count').classList.remove('sync-pulse'), 600);
         }
 
         // CAMBIO EN VIC DESDE OTRO DISPOSITIVO.
         if (newV !== currentV) {
-            const vEl = document.getElementById('v-count');
-            vEl.textContent = newV;
-            vEl.classList.add('sync-pulse');
-            setTimeout(() => vEl.classList.remove('sync-pulse'), 600);
+            document.getElementById('v-count').textContent = newV;
+            document.getElementById('v-count').classList.add('sync-pulse');
+            setTimeout(() => document.getElementById('v-count').classList.remove('sync-pulse'), 600);
         }
 
         updateTotal();
