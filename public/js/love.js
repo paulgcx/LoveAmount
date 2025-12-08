@@ -1,8 +1,10 @@
+// ----- INCREMENTAR EL CONTADOR DE AMOR -----
 async function increment(type) {
+    // Recoger el valor de GET.
     const url = type === 'paul' ? '/increment/paul' : '/increment/vic';
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    // Efecto a animar
+    // Seleccionar el contador específico para cada caso -> Paul | Vic.
     const counterAnim = document.getElementById(type === 'paul' ? 'p-count' : 'v-count');
     counterAnim.classList.add('updating');
 
@@ -16,6 +18,7 @@ async function increment(type) {
             }
         });
 
+        // INCREMENTO CORRECTO.
         if (response.ok) {
             const data = await response.json();
             counterAnim.textContent = type === 'paul' ? data.p_count : data.v_count;
@@ -30,121 +33,135 @@ async function increment(type) {
     }
 }
 
+// ----- ACTUALIZAR EL TOTAL DE AMOR -----
 function updateTotal() {
     const p = parseInt(document.getElementById('p-count').textContent) || 0;
     const v = parseInt(document.getElementById('v-count').textContent) || 0;
     const total = p + v;
-    document.getElementById('total-count').textContent = total;
+    const totalEl = document.getElementById('total-count');
+
+    if (totalEl) {
+        totalEl.textContent = total;
+    }
 }
 
-// Función para crear corazones en la posición del clic
+// ----- CREAR ANIMACIÓN DE CORAZONES AL PULSAR EL BOTÓN -----
 function createHearts(x, y) {
     const container = document.getElementById('hearts-container');
-    const count = 8; // Número de corazones por clic
+    const count = 8;
 
     for (let i = 0; i < count; i++) {
         const heart = document.createElement('div');
         heart.innerHTML = '❤️';
         heart.className = 'heart';
-
-        // Posición inicial: donde se hizo clic
         heart.style.left = `${x}px`;
         heart.style.top = `${y}px`;
 
-        // Dirección aleatoria
-        const angle = Math.random() * Math.PI * 2; // 0 a 360 grados en radianes
-        const distance = 80 + Math.random() * 120; // 80px a 200px
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 80 + Math.random() * 120;
         const tx = Math.cos(angle) * distance;
         const ty = Math.sin(angle) * distance;
 
         heart.style.setProperty('--tx', `${tx}px`);
         heart.style.setProperty('--ty', `${ty}px`);
-
         container.appendChild(heart);
 
-        // Eliminar del DOM después de la animación
         setTimeout(() => {
             heart.remove();
         }, 1200);
     }
 }
 
-// Nueva función para manejar el clic con efecto
+// ----- MÉTODO QUE LLAMA A DOS LÓGICAS DISTINTAS -> INCREMENTO + ANIMACIÓN CORAZONES.
 function incrementWithEffect(type, event) {
-    // Obtener posición del clic
     const rect = event.target.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
     const y = rect.top + rect.height / 2;
 
-    // Crear corazones
     createHearts(x, y);
-
-    // Mostrar globo de dialogo.
     if (type === 'paul') showBubble('paul-bubble');
     if (type === 'vic') showBubble('vic-bubble');
 
-    // Ejecutar la lógica de incremento
     increment(type);
 }
 
-// Actualiza los contadores cada segundo
-setInterval(async () => {
-    try {
-        const response = await fetch('/', {
-            method: 'GET',
-            headers: {
-                'Cache-Control': 'no-cache, no-store, must-revalidate',
-                'Pragma': 'no-cache',
-                'Expires': '0'
+// ----- POLLING: INCREMENTO EN TIEMPO REAL DESDE DIFERENTES DISPOSITIVOS. -----
+let pollingActive = false;
+
+function startPolling() {
+    if (pollingActive) return;
+    pollingActive = true;
+
+    setInterval(async () => {
+        try {
+            const response = await fetch('/', {
+                method: 'GET',
+                headers: {
+                    'Cache-Control': 'no-cache, no-store, must-revalidate',
+                    'Pragma': 'no-cache',
+                    'Expires': '0'
+                }
+            });
+
+            if (!response.ok) return;
+
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            const newPEl = doc.getElementById('p-count');
+            const newVEl = doc.getElementById('v-count');
+            const currentPEl = document.getElementById('p-count');
+            const currentVEl = document.getElementById('v-count');
+
+            if (!newPEl || !newVEl || !currentPEl || !currentVEl) return;
+
+            const newP = newPEl.textContent.trim();
+            const newV = newVEl.textContent.trim();
+            const currentP = currentPEl.textContent.trim();
+            const currentV = currentVEl.textContent.trim();
+
+            let changed = false;
+
+            if (newP !== currentP) {
+                currentPEl.textContent = newP;
+                currentPEl.classList.add('sync-pulse');
+                setTimeout(() => currentPEl.classList.remove('sync-pulse'), 600);
+                changed = true;
             }
-        });
 
-        if (!response.ok) return;
+            if (newV !== currentV) {
+                currentVEl.textContent = newV;
+                currentVEl.classList.add('sync-pulse');
+                setTimeout(() => currentVEl.classList.remove('sync-pulse'), 600);
+                changed = true;
+            }
 
-        const html = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-
-        const newPEl = doc.getElementById('p-count');
-        const newVEl = doc.getElementById('v-count');
-        if (!newPEl || !newVEl) return;
-        
-        // Actualiza solo si el valor cambió
-        const newP = newPEl.textContent;
-        const newV = newVEl.textContent;
-        const currentP = document.getElementById('p-count')?.textContent;
-        const currentV = document.getElementById('v-count')?.textContent;
-        
-        // CAMBIO EN PAUL DESDE OTRO DISPOSITIVO.
-        if (newP !== currentP) {
-            document.getElementById('p-count').textContent = newP;
-            document.getElementById('p-count').classList.add('sync-pulse');
-            setTimeout(() => document.getElementById('p-count').classList.remove('sync-pulse'), 600);
+            if (changed) {
+                updateTotal();
+            }
+        } catch (e) {
+            // Silencioso: No rompe la app
         }
+    }, 3000); // ACTUALIZACIÓN CADA 3 SEGUNDOS.
+}
 
-        // CAMBIO EN VIC DESDE OTRO DISPOSITIVO.
-        if (newV !== currentV) {
-            document.getElementById('v-count').textContent = newV;
-            document.getElementById('v-count').classList.add('sync-pulse');
-            setTimeout(() => document.getElementById('v-count').classList.remove('sync-pulse'), 600);
-        }
+// ----- INICIAR POLLING CUANDO ESTÉ LISTO -----
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startPolling);
+} else {
+    startPolling();
+}
 
-        updateTotal();
-    } catch (e) {
-        // TO DO.
-    }
-}, 1000);
-
+// ----- GLOBO DE DIALOGO CADA VEZ QUE SE INCREMENTA AMOR -----
 function showBubble(bubbleId) {
     const bubble = document.getElementById(bubbleId);
     if (!bubble) return;
 
-    // Asegurar que empieza oculto (por si hay interrupciones)
     bubble.classList.remove('show');
-    void bubble.offsetWidth; // fuerza reflow
+    void bubble.offsetWidth;
     bubble.classList.add('show');
 
-    // Ocultar después de 2 segundos
     setTimeout(() => {
         bubble.classList.remove('show');
     }, 2000);
