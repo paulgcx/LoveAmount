@@ -19,6 +19,7 @@ async function increment(type) {
         if (response.ok) {
             const data = await response.json();
             counterAnim.textContent = type === 'paul' ? data.p_count : data.v_count;
+            updateTotal();
         } else {
             alert('¡Algo falló!');
         }
@@ -27,6 +28,13 @@ async function increment(type) {
     } finally {
         setTimeout(() => counterAnim.classList.remove('updating'), 150);
     }
+}
+
+function updateTotal() {
+    const p = parseInt(document.getElementById('p-count').textContent) || 0;
+    const v = parseInt(document.getElementById('v-count').textContent) || 0;
+    const total = p + v;
+    document.getElementById('total-count').textContent = total;
 }
 
 // Función para crear corazones en la posición del clic
@@ -79,7 +87,7 @@ function incrementWithEffect(type, event) {
     increment(type);
 }
 
-// Actualiza los contadores cada 3 segundos
+// Actualiza los contadores cada segundo
 setInterval(async () => {
     try {
         const response = await fetch('/');
@@ -92,9 +100,6 @@ setInterval(async () => {
         const newV = doc.getElementById('v-count').textContent;
         const currentP = document.getElementById('p-count').textContent;
         const currentV = document.getElementById('v-count').textContent;
-
-        // Valor total
-        const total = document.querySelector('.total-count');
         
         // CAMBIO EN PAUL DESDE OTRO DISPOSITIVO.
         if (newP !== currentP) {
@@ -112,12 +117,7 @@ setInterval(async () => {
             setTimeout(() => vEl.classList.remove('sync-pulse'), 600);
         }
 
-        // CAMBIO EN EL TOTAL
-        if (total) {
-            const p = parseInt(document.getElementById('p-count').textContent);
-            const v = parseInt(document.getElementById('v-count').textContent);
-            total.textContent = p + v;
-        }
+        updateTotal();
     } catch (e) {
         // TO DO.
     }

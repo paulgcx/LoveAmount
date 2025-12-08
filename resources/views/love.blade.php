@@ -24,7 +24,7 @@
         <div>
             <div class="date-display">{{ $date }}</div>
             <div class="total-container">
-                <div class="total-count">{{ $p_count + $v_count }}</div>
+                <div class="total-count" id="total-count">{{ $p_count + $v_count }}</div>
                 <div class="total-heart">❤️</div>
             </div>
         </div>
