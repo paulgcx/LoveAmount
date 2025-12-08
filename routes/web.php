@@ -11,3 +11,4 @@ Route::get('/tiempo-juntos', [TiempoJuntosController::class, 'index'])->name('ti
 // INCREMENTOS -------------------------------------------------------------
 Route::post('/increment/paul', [LoveCounterController::class, 'incrementPaul']);
 Route::post('/increment/vic', [LoveCounterController::class, 'incrementVic']);
+Route::get('/api/counts', [LoveCounterController::class, 'getCurrentCounts']);

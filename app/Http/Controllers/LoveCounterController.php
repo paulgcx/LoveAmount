@@ -32,4 +32,12 @@ class LoveCounterController extends Controller
         $record->save();
         return response()->json(['v_count' => $record->v_count]);
     }
+
+    public function getCurrentCounts() {
+        $record = DailyLoveCount::forToday();
+        return response()->json([
+            'p_count' => $record->p_count,
+            'v_count' => $record->v_count,
+        ]);
+    }
 }
