@@ -94,46 +94,26 @@ function startPolling() {
 
     setInterval(async () => {
         try {
-            const response = await fetch('/', {
-                method: 'GET',
-                headers: {
-                    'Cache-Control': 'no-cache, no-store, must-revalidate',
-                    'Pragma': 'no-cache',
-                    'Expires': '0'
-                }
-            });
-
+            const response = await fetch('/api/counts');
             if (!response.ok) return;
 
-            const html = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-
-            const newPEl = doc.getElementById('p-count');
-            const newVEl = doc.getElementById('v-count');
-            const currentPEl = document.getElementById('p-count');
-            const currentVEl = document.getElementById('v-count');
-
-            if (!newPEl || !newVEl || !currentPEl || !currentVEl) return;
-
-            const newP = newPEl.textContent.trim();
-            const newV = newVEl.textContent.trim();
-            const currentP = currentPEl.textContent.trim();
-            const currentV = currentVEl.textContent.trim();
+            const data = await response.json();
+            const currentP = parseInt(document.getElementById('p-count')?.textContent) || 0;
+            const currentV = parseInt(document.getElementById('v-count')?.textContent) || 0;
 
             let changed = false;
 
-            if (newP !== currentP) {
-                currentPEl.textContent = newP;
-                currentPEl.classList.add('sync-pulse');
-                setTimeout(() => currentPEl.classList.remove('sync-pulse'), 600);
+            if (data.p_count !== currentP) {
+                document.getElementById('p-count').textContent = data.p_count;
+                document.getElementById('p-count').classList.add('sync-pulse');
+                setTimeout(() => document.getElementById('p-count').classList.remove('sync-pulse'), 600);
                 changed = true;
             }
 
-            if (newV !== currentV) {
-                currentVEl.textContent = newV;
-                currentVEl.classList.add('sync-pulse');
-                setTimeout(() => currentVEl.classList.remove('sync-pulse'), 600);
+            if (data.v_count !== currentV) {
+                document.getElementById('v-count').textContent = data.v_count;
+                document.getElementById('v-count').classList.add('sync-pulse');
+                setTimeout(() => document.getElementById('v-count').classList.remove('sync-pulse'), 600);
                 changed = true;
             }
 
@@ -143,7 +123,7 @@ function startPolling() {
         } catch (e) {
             // Silencioso: No rompe la app
         }
-    }, 3000); // ACTUALIZACIÓN CADA 3 SEGUNDOS.
+    }, 3000);
 }
 
 // ----- INICIAR POLLING CUANDO ESTÉ LISTO -----
