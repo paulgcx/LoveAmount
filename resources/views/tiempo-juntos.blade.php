@@ -71,6 +71,6 @@
     </div>
 
     <script>const startDate = new Date('{{ $startDateForJs }}');</script>
-    <script src="{{ asset('js/tiempo-juntos.js') }}"></script>
+    <script src="{{ asset('js/tiempo-juntos/timer.js') }}"></script>
 </body>
 </html>
