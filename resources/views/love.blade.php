@@ -39,7 +39,7 @@
                     <div class="name">Paul</div>
                     <div class="counter fade" id="p-count">{{ $p_count }}</div>
                     @if($key === 'paul')
-                        <button class="btn" onclick="incrementWithEffect('paul', event)">+1 ❤️</button>
+                        <button class="btn" onclick="handleLoveClick('paul', event)">+1 ❤️</button>
                     @else
                         <button class="btn disabled" disabled>+1 ❤️</button>
                     @endif
@@ -54,7 +54,7 @@
                     <div class="name">VicMeow</div>
                     <div class="counter fade" id="v-count">{{ $v_count }}</div>
                     @if($key === 'vic')
-                        <button class="btn" onclick="incrementWithEffect('vic', event)">+1 ❤️</button>
+                        <button class="btn" onclick="handleLoveClick('vic', event)">+1 ❤️</button>
                     @else
                         <button class="btn disabled" disabled>+1 ❤️</button>
                     @endif
@@ -71,7 +71,13 @@
     </div>
 
     <div id="hearts-container"></div>
-    <script src="{{ asset('js/love.js') }}"></script>
+    
+    <!-- SCRIPTS -->
+    <script src="{{ asset('js/love/api.js') }}"></script>
+    <script src="{{ asset('js/love/dom.js') }}"></script>
+    <script src="{{ asset('js/love/ui-effects.js') }}"></script>
+    <script src="{{ asset('js/love/sync.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
     @endif
 </body>
 </html>
