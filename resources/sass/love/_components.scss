@@ -1,0 +1,127 @@
+@use '../shared' as *;
+
+// Mensaje de introducción
+.intro-message {
+    background: $love-intro-bg;
+    backdrop-filter: blur(6px);
+    border: 1px solid $love-border-color;
+    border-radius: 20px;
+    padding: 24px;
+    margin: 0 auto 30px;
+    max-width: 500px;
+    text-align: center;
+    font-size: 1.2em;
+    color: $color-text-accent;
+    box-shadow: $shadow-box-love;
+
+    a {
+        color: $color-link;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background 0.2s;
+
+        &:hover {
+            background: rgba(153, 105, 255, 0.15);
+        }
+    }
+}
+
+// Contenedores de persona
+.person-with-bg {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+// Imágenes de fondo
+.billy,
+.pusheen {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: auto;
+    z-index: -1;
+
+    &.billy {
+        max-width: 100px;
+    }
+
+    &.pusheen {
+        top: -55px;
+        max-width: 150px;
+    }
+}
+
+// Caja de persona
+.person-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: $love-person-box-bg;
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+    padding: 24px 20px;
+    min-width: 160px;
+    box-shadow: $shadow-box-love;
+}
+
+// Nombre y contador
+.name {
+    font-size: 1.2em;
+    color: $color-text-accent;
+    font-weight: 600;
+}
+
+.counter {
+    font-size: 3.6em;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+    margin-bottom: 16px;
+}
+
+// Botones
+.btn {
+    padding: 10px 24px;
+    font-size: 1.05em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: linear-gradient(to right, $color-secondary, #a45deb);
+    color: white;
+    font-weight: 600;
+    box-shadow: $shadow-button;
+    transition: all 0.25s ease;
+
+    &:hover {
+        background: linear-gradient(to right, #9b45f0, #b575f5);
+        transform: scale(1.05);
+        box-shadow: 0 6px 16px rgba(138, 43, 226, 0.6);
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+}
+
+// Total combinado
+.total-count {
+    font-size: 4.2em;
+    font-weight: 800;
+    color: white;
+    text-shadow: 0 0 16px rgba(255, 105, 180, 0.7);
+    line-height: 1;
+    margin: 0;
+}
+
+.total-heart {
+    font-size: 2.8em;
+    color: $color-primary;
+    animation: heartbeat 1.2s infinite;
+    line-height: 1;
+}

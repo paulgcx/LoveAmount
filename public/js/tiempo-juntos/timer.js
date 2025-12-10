@@ -1,6 +1,6 @@
-// public/js/tiempo-juntos/timer.js
 (function () {
-    const startDate = new Date('{{ $startDateForJs }}');
+    const startDate = new Date(window.appData.startDate);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
 
     function updateTimer() {
         const now = new Date();
@@ -22,7 +22,6 @@
         document.getElementById('months').textContent = months;
         document.getElementById('days').textContent = days;
 
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('start-date').textContent = startDate.toLocaleDateString('es-ES', options);
 
         updateNextAnniversary(now);

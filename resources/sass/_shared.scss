@@ -1,0 +1,29 @@
+// =============
+// Variables globales compartidas
+// =============
+
+// Colores
+$color-bg-gradient-love: linear-gradient(135deg, #1a0a1f, #2d0b3a, #4b0082);
+$color-bg-gradient-tj: linear-gradient(135deg, #667eea, #764ba2);
+
+    // Colores específicos de love
+    $love-person-box-bg: rgba(70, 20, 90, 1);
+    $love-intro-bg: rgba(70, 20, 90, 0.35);
+    $love-border-color: rgba(180, 100, 220, 0.3);
+
+$color-primary: #ff69b4; // rosa principal
+$color-secondary: #8a2be2; // violeta
+$color-text-light: #f8f0ff;
+$color-text-accent: #e0c0ff;
+$color-purple: #6a11cb;
+$color-link: #7369ff;
+
+// Tipografías
+$font-main: 'Segoe UI', system-ui, sans-serif;
+$font-script: 'Dancing Script', cursive;
+$font-sans: 'Quicksand', sans-serif;
+
+// Sombras
+$shadow-box-love: 0 6px 20px rgba(0, 0, 0, 0.3);
+$shadow-box-tj: 0 10px 30px rgba(0, 0, 0, 0.15);
+$shadow-button: 0 4px 12px rgba(138, 43, 226, 0.4);

@@ -11,8 +11,7 @@
     <title>❤️</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('css/love.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/arrow.css') }}">
+    @vite(['resources/sass/love.scss'])
 </head>
 <body>
     <div class="container">

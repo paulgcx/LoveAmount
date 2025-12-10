@@ -12,9 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🕑</title>
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('css/tiempo-juntos.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/arrow.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    @vite(['resources/sass/tiempo-juntos.scss'])
 </head>
 <body>
     <div class="container">
@@ -70,7 +69,11 @@
 
     </div>
 
-    <script>const startDate = new Date('{{ $startDateForJs }}');</script>
+    <script>
+        window.appData = {
+            startDate: '{{ $startDateForJs }}'
+        };
+    </script>
     <script src="{{ asset('js/tiempo-juntos/timer.js') }}"></script>
 </body>
 </html>
