@@ -5,7 +5,7 @@ if (document.getElementById('p-count')) {
     });
 }
 
-// Manejador global para los botones (puedes dejarlo en Blade o aquí)
+// Manejador global para los botones
 window.handleLoveClick = function(type, event) {
     const rect = event.target.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
