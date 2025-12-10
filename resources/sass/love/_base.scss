@@ -1,0 +1,19 @@
+@use '../shared' as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-main;
+    background: $color-bg-gradient-love;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-text-light;
+    padding: 20px;
+    text-align: center;
+}

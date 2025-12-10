@@ -1,0 +1,32 @@
+@use '../shared' as *;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.counters {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.total-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 5px 0 50px;
+}
+
+.date-display {
+    font-size: 1.3em;
+    color: #d4a7ff;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 8px rgba(212, 167, 255, 0.3);
+}
