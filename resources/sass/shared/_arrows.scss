@@ -1,0 +1,43 @@
+@use '../shared' as *;
+
+// Flecha hacia abajo (desde love → tiempo-juntos)
+.arrow-link {
+    display: inline-block;
+    color: #d4a7ff;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.3s;
+    outline: none;
+
+    &:hover,
+    &:focus {
+        opacity: 1;
+        transform: translateY(4px);
+    }
+
+    svg {
+        stroke: #d4a7ff;
+        display: block;
+    }
+}
+
+// Flecha hacia arriba (desde tiempo-juntos → love)
+.back-arrow {
+    display: inline-block;
+    color: $color-purple; // #6a11cb
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.3s;
+    outline: none;
+
+    &:hover,
+    &:focus {
+        opacity: 1;
+        transform: translateY(-4px);
+    }
+
+    svg {
+        stroke: $color-purple;
+        display: block;
+    }
+}
