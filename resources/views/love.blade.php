@@ -77,6 +77,13 @@
     <script src="{{ asset('js/love/ui-effects.js') }}"></script>
     <script src="{{ asset('js/love/sync.js') }}"></script>
     <script src="{{ asset('js/script.js') }}"></script>
+
+        <!-- SI ES AÑO NUEVO, QUE HAYAN CONFETIS!! -->
+        @if(now()->month == 1 && now()->day == 1)
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+        <script src="{{ asset('js/love/new-year.js') }}"></script>
+        @endif
+
     @endif
 </body>
 </html>
